@@ -5,6 +5,7 @@ exports.up = function(knex) {
           return knex.schema.createTable('diaries', (t) => {
             t.increments('id').primary();
             t.string('name');
+            t.json('requirements')
           });
         }
       });
