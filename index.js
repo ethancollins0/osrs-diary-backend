@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const db = require('./db_queries')
+const scraper = require('./score_scraper')
 
 const app = express()
 
@@ -22,12 +23,15 @@ app.get('/', (req, res) => {
 
 app.post('/stats', (req, res) => {
     const { name } = req.body
-    console.log(name)
-    if (name){
-        res.json('all good')
-    } else {
-        res.json(null)
-    }
+    scraper.scrape(name)
+        .then(stats => {
+            console.log(stats)
+            if (stats){
+                res.json(stats)
+            } else {
+                res.json(null)
+            }
+        })
 })
 
 let PORT = process.env.PORT || 3000
