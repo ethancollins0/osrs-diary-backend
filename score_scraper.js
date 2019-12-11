@@ -31,7 +31,7 @@ scrape = (name) => {
             'thieving',
             'slayer',
             'farming',
-            'runecraft',
+            'runecrafting',
             'hunter',
             'construction'
         ]

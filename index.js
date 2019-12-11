@@ -10,7 +10,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
+app.get('/diaries', (req, res) => {
     db.getDiaries()
         .then(diaries => {
             if (diaries){
@@ -34,7 +34,7 @@ app.post('/stats', (req, res) => {
         })
 })
 
-let PORT = process.env.PORT || 3000
+let PORT = process.env.PORT || 3001
 
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}...`)
